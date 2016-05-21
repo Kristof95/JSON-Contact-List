@@ -1,0 +1,120 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
+
+* {
+    -webkit-user-select:none;
+}
+
+#backBG {
+    -webkit-user-select:none;
+    position:absolute;
+    word-break:break-all;
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(151, 191, 13, 0.5);
+    font-size:3vmin;
+}
+
+#logo {
+    position:absolute;
+    width:20vmin;
+    margin:5vmin 18vmin;
+}
+
+#bg {
+    background:-webkit-radial-gradient(#4e4e4e, #1a1a1a);
+    width:100%;
+    height:100%;
+    position:absolute;
+}
+
+.business-card > .card-front {
+    position:absolute;
+    background:#e8e8e8;
+    background-image:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/194963/paper_fibers.png");
+    overflow:hidden;
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    -webkit-backface-visibility:hidden;
+    transition:all 0.8s ease-in-out;
+    width:100%;
+    height:100%;
+}
+
+.business-card > .card-back {
+    position:absolute;
+    background:#e8e8e8;
+    background-image:url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/194963/paper_fibers.png");
+    -webkit-transform: perspective(600px) rotateY(180deg);
+    overflow:hidden;
+    -webkit-backface-visibility:hidden;
+    transition:all 0.8s ease-in-out;
+    width:100%;
+    height:100%;
+}
+
+.business-card {
+    width:58vmin;
+    height:30vmin;
+    margin:30vmin auto;
+    position:relative;
+}
+
+.business-card:hover > .card-front{
+    -webkit-transform: perspective(600px) rotateY(-180deg);
+    cursor:pointer;
+}
+.business-card:hover > .card-back{
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    cursor:pointer;
+}
+
+#qr {
+    height:15vmin;
+    width:15vmin;
+    top:6.5vmin;
+    position:relative;
+    float:left;
+    margin-left: 1vmin;
+}
+
+#curly {
+    color:rgb(29, 96, 167);
+    font-size:25vmin;
+    margin-top:-5vmin;
+    float:left;
+    margin-left: 5vmin;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#info {
+    float:left;
+    margin-left:4vmin;
+    margin-top: 4vmin;
+    color: dodgerblue;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#top {
+    font-size:2vmin;
+}
+
+#bottom {
+    top:2vmin;
+    color:dodgerblue;
+    font-size:13px;
+    line-height:2.2vmin;
+    position:relative;
+    height:20vmin;
+    width:22vmin;
+    overflow:hidden;
+    display:block;
+}
+
+#top > img {
+    width:3.8vmin;
+    margin-top:1vmin;
+    float:left;
+    position:relative;
+}
+
+#html {
+    -webkit-filter:hue-rotate(210deg);
+}

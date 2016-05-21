@@ -1,0 +1,62 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="bg">
+    <div class="business-card">
+        <div class="card-front">
+            <img src="css/qrcode.png" id="qr"/>
+            <span id="curly">{</span>
+            <div id="info">
+                <span id="bottom"></span>
+            </div>
+        </div>
+        <div class="card-back">
+            <div id="backBG">
+            </div>
+            <img src="css/codecoollogo.png" id="logo"/>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    var xmlhttp = new XMLHttpRequest();
+    var url = "http://www.filltext.com/?rows=1&fname={firstName}&lname={lastName}&city={city}&address={addressObject}&email={email}&phone={phone}";
+
+    var obj = [{"fname":"","lname":"","city":"","address":{"streetAddress":"","city":"","state":"","zip":""},"email":"","phone":""}];
+
+    var personDetails="";
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+            var jsonObject = JSON.parse(xmlhttp.responseText);
+            for(var i = 0; i < jsonObject.length; i++)
+            {
+                personDetails += "<p"+jsonObject[i].fname +"&nbsp;"+ jsonObject[i].lname +"<br><br/>"+ jsonObject[i].email + "<br><br/>" +jsonObject[i].city + jsonObject[i].address.state + jsonObject[i].address.streetAddress + jsonObject[i].address.zip + "<br><br/>" + jsonObject[i].phone + "</p>";
+                document.getElementById("bottom").innerHTML = personDetails;
+                textToBin(personDetails);
+            }
+        }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+function textToBin(text)
+{
+    var PADDING = "00000000";
+    var resultText = "";
+    var padded = "";
+
+    for (var i = 0; i < text.length; i++)
+    {
+        var compact = text.charCodeAt(i).toString(2);
+        padded  = compact.substring(0, PADDING.length - compact.length) + compact;
+        resultText +=  padded;
+        document.getElementById("backBG").innerHTML = resultText.toString();
+    }
+}
+</script>
+</body>
+</html>
